@@ -24,7 +24,7 @@ export default async function Page() {
       <h1>example-nextjs on UQBITZ</h1>
       <p>Rendered on the server for every request.</p>
       <ul>
-        <li>marker: <code id="marker">uqbitz-example-nextjs-v1</code></li>
+        <li>marker: <code id="marker">uqbitz-example-nextjs-v2</code></li>
         <li>rendered-at: <code id="rendered-at">{new Date().toISOString()}</code></li>
         <li>request-id: <code id="request-id">{randomUUID()}</code></li>
         <li>echo x-uqbitz-probe: <code id="probe">{h.get('x-uqbitz-probe') ?? 'none'}</code></li>
