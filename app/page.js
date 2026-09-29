@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import { headers } from 'next/headers';
 
 // Render on every request: this page must never be static.
@@ -7,7 +8,10 @@ export const dynamic = 'force-dynamic';
 
 async function releaseMarker() {
   try {
-    return (await readFile('release-marker.txt', 'utf8')).trim();
+    // The standalone server chdirs into .next/standalone; APP_ROOT is the
+    // project root, where the release command writes the marker.
+    const root = process.env.APP_ROOT ?? process.cwd();
+    return (await readFile(join(root, 'release-marker.txt'), 'utf8')).trim();
   } catch {
     return 'absent';
   }

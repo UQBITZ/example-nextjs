@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "build": "next build && cp -r .next/static .next/standalone/.next/static",
+    "start": "APP_ROOT=$PWD HOSTNAME=0.0.0.0 node .next/standalone/server.js"
   },
   "dependencies": {
     "next": "^15.5.0",
